@@ -1,16 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Yang Lu
- * Date: 16/3/10
- * Time: PM3:34
- */
-
-//src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false"
-//src="http://maps.google.com/maps/api/js?sensor=false&libraries=places"
-// <script src="http://libs.useso.com/js/jquery/1.7.2/jquery.min.js"></script>
-//<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-?>
 
 
 <html lang="en">
@@ -18,61 +5,85 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0; user-scalable=0;">
-
-
+    <title>Search Result</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script>
+        $(function() {
+            $( "#datepicker" ).datepicker();
+        });
+    </script>
 
     <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="js/jquery.timepicker.css">
+    <script type="text/javascript" src="js/jquery.timepicker.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // create TimePicker from input HTML element
+            $('#startTime').timepicker({ 'scrollDefault': 'now' });
+        });
 
-<title>Search Result</title>
-    
-<script type="text/javascript">
-    var selectedValueCat = "swimming";
-    var selectedValueSub = "caulfield";
-   function changeFunc() {
-    var selectBox = document.getElementById("category");
-     selectedValueCat = category.options[category.selectedIndex].value;
-    alert(selectedValueCat);
-   }
-    function changeFunc1(){
-        var selectBox1 = document.getElementById("suburb");
-        selectedValueSub = suburb.options[suburb.selectedIndex].value;
-        alert(selectedValueSub);
-    }
-    function completeAndRedirect(){
-         alert(selectedValueSub);
-        alert(selectedValueCat);
-        location.href = "http://localhost/searchResult.php?type=1&category="+selectedValueCat+"&suburb="+selectedValueSub;
-    }
-    
-    function normalSearch(){
-        var selectTextBox = document.getElementById("pref-search1");
-        var selectKeyword = selectTextBox.value;
-       var selectCatBox = document.getElementById("pref-category").value;
-        var selecSuburbBox = document.getElementById("pref-postCode").value;
-        //window.open("http://localhost/searchResult.php?activityName="+selectKeyword+"&suburb="+selecSuburbBox+"&category="+selectCatBox,'_self');
-         showUserPoints(selectKeyword,selectCatBox,selecSuburbBox);
-       
-        
-        //location.href = "http://localhost/searchResult.php?type=0&activityName="+selectKeyword;
-    }
-  
-           
+        $(document).ready(function() {
+            // create TimePicker from input HTML element
+            $('#endTime').timepicker({ 'scrollDefault': 'now' });
+        });
+    </script>
+    <script type="text/javascript">
+        var selectedValueCat = "swimming";
+        var selectedValueSub = "caulfield";
+
+        //$('#date').bootstrapMaterialDatePicker({ weekStart : 0, time: false });
+        $(function() {
+            $( '#datepicker' ).datepicker();
+        });
+
+        function changeFunc() {
+            var selectBox = document.getElementById("category");
+            selectedValueCat = category.options[category.selectedIndex].value;
+            alert(selectedValueCat);
+        }
+        function changeFunc1(){
+            var selectBox1 = document.getElementById("suburb");
+            selectedValueSub = suburb.options[suburb.selectedIndex].value;
+            alert(selectedValueSub);
+        }
+        function completeAndRedirect(){
+            alert(selectedValueSub);
+            alert(selectedValueCat);
+            location.href = "http://localhost/boredPandaDC1/searchResult.php?type=1&category="+selectedValueCat+"&suburb="+selectedValueSub;
+        }
+
+        function normalSearch(){
+            var selectTextBox = document.getElementById("pref-search1");
+            var selectKeyword = selectTextBox.value;
+            var selectCatBox = document.getElementById("pref-category").value;
+            var selecSuburbBox = document.getElementById("pref-postCode").value;
+            //window.open("http://localhost/searchResult.php?activityName="+selectKeyword+"&suburb="+selecSuburbBox+"&category="+selectCatBox,'_self');
+            showUserPoints(selectKeyword,selectCatBox,selecSuburbBox);
 
 
-  </script>
-   
-        
-        <link rel="stylesheet" type="text/css" href="simpleCSS.css">
-        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
-        </script>
-        <script src="http://libs.useso.com/js/jquery/1.7.2/jquery.min.js"></script>
-        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <script src="SimpleMapJS.js"></script>
+            //location.href = "http://localhost/searchResult.php?type=0&activityName="+selectKeyword;
+        }
+
+
+
+
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="simpleCSS.css">
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
+    </script>
+<!--    <script src="http://libs.useso.com/js/jquery/1.7.2/jquery.min.js"></script>-->
+<!--    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>-->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="SimpleMapJS.js"></script>
+
     </head>
 
     <!-- GUnload() will prevents memory leaks-->
@@ -133,38 +144,11 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-    
 
-    
-    
-        <!--
-<div class="col-md-5" id="mapSearch">
-<h1>Search Again</h1>
-    
-<div class="flexsearch">
-		<div class="flexsearch--wrapper">
-			<form class="flexsearch--form" action="#" method="post">
-				<div class="flexsearch--input-wrapper">
-					<input class="flexsearch--input" type="search" placeholder="search">
-				</div>
-				<input class="flexsearch--submit" type="submit" value="&#10140;" onclick="normalSearch()"/>
-			</form>
-		</div>
-            </div>
 
-<h1>Live Events</h1>
-<script src="http://www.eventsvictoria.com/Scripts/atdw-dist-min/v2-1/Default/widget/widget.min.js" type="text/javascript"></script><div class="atdw-event-widget"></div><script type="text/javascript">window.atdw.myevents.widget.load({
-  mode:'List',
-  locations:{all:true,regions:'',councils:'',postcodes:''},
-  types:{business:false,leisure:true},
-  tags:'ARTCULTURE,COMMUNITY,FAMILY,FOODWINE,GARDENSAGR,INDIGENOUS,LIFESTYLE,LIVEMUSIC,MARKETS,MULTICULTU,STAGESHOWS,SHOPPING,SPORTS',
-  businessTypes:'',
-  freeOnly:false,
-  size:{width:360,height:540},
-  theme:'BLUE'
-});</script>
-        </div>
--->
+
+
+<!--    <input type="text" id="datepicker" value=""/></label>-->
         
 <div class="container-fluid">
         <div id="filter-panel" class="">
@@ -230,16 +214,7 @@
                                         </div>
                                         <div class="modal-body">
                                             Choose a date preference..
-                                        <script src="http://www.eventsvictoria.com/Scripts/atdw-dist-min/v2-1/Default/widget/widget.min.js" type="text/javascript"></script><div class="atdw-event-widget"></div><script type="text/javascript">window.atdw.myevents.widget.load({
-                                        mode:'Calendar',
-  locations:{all:true,regions:'',councils:'',postcodes:''},
-  types:{business:true,leisure:true},
-  tags:'ARTCULTURE,COMMUNITY,FAMILY,FOODWINE,GARDENSAGR,INDIGENOUS,LIFESTYLE,LIVEMUSIC,MARKETS,MULTICULTU,STAGESHOWS,SHOPPING,SPORTS',
-  businessTypes:'BUSINESSAWARDS,BUSINESSCONFERENCE,BUSINESSCONSULT,BUSINESSEVTCLASS,BUSINESSEXHIBIT,BUSINESSFESTIVAL,BUSINESSLAUNCH',
-  freeOnly:false,
-  size:{width:560,height:500},
-  theme:'RED'
-});</script>
+
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -254,26 +229,57 @@
                 </div>
             </div>
         </div>
-        
-        
-	
+
+
+
 
             <div id="searchBar">
         <fieldset class="search">
             <div id="slider" class="slider">
         <div class="form-style-2">
-<div class="form-style-2-heading">Yay! You Are Creating an Event</div>
-<form action="" method="post">
-<label for="field1"><span>Event Name <span class="required">*</span></span><input type="text" class="input-field" name="field1" value="" /></label>
-<label for="field2"><span>Categoty <span class="required">*</span></span><input type="text" class="input-field" name="field2" value="" /></label>
-<label for="field2"><span>Address <span class="required">*</span></span><input type="text" class="input-field" name="field2" value="" /></label>
-<label for="field4"><span>Start Time:</span><select name="field4" class="select-field">
-<option value="General Question">General</option>
-<option value="Advertise">Advertisement</option>
-<option value="Partnership">Partnership</option>
-</select></label>
-    <label><span>Mobile</span><input type="text" class="tel-number-field" name="tel_no_1" value="" maxlength="4" />-<input type="text" class="tel-number-field" name="tel_no_2" value="" maxlength="4"  />-<input type="text" class="tel-number-field" name="tel_no_3" value="" maxlength="10"  /></label>
-<label for="field5"><span>Event Description <span class="required">*</span></span><textarea name="field5" class="textarea-field"></textarea></label>
+        <div class="form-style-2-heading">Yay! You Are Creating an Event</div>
+        <form action="" method="post">
+
+        <label for="eveName"><span>Event Name <span class="required">*</span></span>
+        <input type="text" class="input-field" name="eveName" value="e.g Backyard basketball"/></label>
+
+        <label for="category"><span>Categoty <span class="required">*</span></span>
+            <select id="pref-category" class="select-field">
+                <option value="1">Mad For Arts</option>
+                <option value="2">Book Nerds</option>
+                <option value="3">Master Coders</option>
+                <option value="4">Tech Nerds</option>
+                <option value="5">Career & Business</option>
+                <option value="6">Crazy Car Lovers</option>
+                <option value="7">I Love Environment</option>
+                <option value="8">Let’s Dance</option>
+                <option value="9">Education and stuff</option>
+                <option value="10">Fit and Tight</option>
+                <option value="11">Foodies</option>
+                <option value="12">Super Gaming</option>
+                <option value="13">LGBT</option>
+                <option value="14">Religion and Beliefs</option>
+                <option value="15">Great Outdoors</option>
+                <option value="16">Indoor Adventures</option>
+                <option value="17">Water Fun</option>
+                <option value="18">Other Stuff</option>
+            </select></label>
+            
+            <label for="date"><span>Date <span class="required">*</span></span>
+            <input type="text" class="input-field" name="date" id="datepicker" value=""/></label>
+
+            <label for="time"><span>Start Time:</span>
+                <input type="text" class="input-field" name="time" id="startTime" value=""/>
+                </label>
+
+            <label for="time"><span>End Time:</span>
+                <input type="text" class="input-field" name="time" id="endTime" value=""/>
+            </label>
+            
+        <label for="address"><span>Address <span class="required">*</span></span>
+        <textarea type="text" class="textarea-field" name="address" value="" minlength="5"></textarea></label>
+
+<label for="eventDescription"><span>Event Description <span class="required">*</span></span><textarea name="eventDescription" class="textarea-field"></textarea></label>
 
 <label><span>&nbsp;</span><input type="submit" value="Submit" /></label>
 </form>
@@ -290,6 +296,6 @@
     <div id="googleMap"></div>
     </div>
     </div>
-    
+
     </body>
-<?php
+</html>

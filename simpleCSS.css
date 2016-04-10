@@ -81,12 +81,12 @@ fieldset.search:hover {
 */
 .slider{
     position:absolute;
-    background-color: rgba(0,0,0,0.6); 
-    color:#fff;
+    background-color: rgba(255,255,255,0.4);
+    color:#000;
     font-size: 11pt;
 
-    width:300px;
-    height:500px;
+    width:400px;
+    height:600px;
     z-index: 1; 
     text-align: start;
     display:none
@@ -105,7 +105,7 @@ fieldset.search:hover {
 }*/
 
 
-<style type="text/css">
+
 .form-style-2{
     max-width: 500px;
     padding: 20px 12px 10px 20px;
@@ -138,6 +138,7 @@ fieldset.search:hover {
     text-align: center;
 }
 .form-style-2 input.input-field{
+    padding-top: 5px;
     width: 48%;
     
 }
@@ -157,13 +158,14 @@ fieldset.search:hover {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     padding: 7px;
+    margin-top: 7px;
     outline: none;
 }
 .form-style-2 .input-field:focus, 
 .form-style-2 .tel-number-field:focus, 
 .form-style-2 .textarea-field:focus,  
 .form-style-2 .select-field:focus{
-    border: 1px solid #0C0;
+    border: 2px solid #0C0;
 }
 .form-style-2 .textarea-field{
     height:100px;

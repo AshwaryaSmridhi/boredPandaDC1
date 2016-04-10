@@ -24,7 +24,7 @@ include("inc/header2.php");
       </div>
     </div>
   </div>
-//change picture resolution
+
 
   <div class="col-sm-6 col-md-3">
     <div class="thumbnail">
