@@ -6,47 +6,99 @@
  * Time: PM4:32
  */
 
+include_once "SqlTool.class.php";
 
 datasetResult();
-
 
 function datasetResult(){
     //later change to search db according to id;
 
-    $category=$_GET['category'];
-    $postcode=$_GET['postcode'];
-    
-    $row = 1;
-    $file_name='dataset/'.$category.'.csv';
-    $flag = false;
-    
-    if(!file_exists($file_name)){
-        echo"no such activity information";
-    }else{
-        $flag = true;
+    $name=null;
+    $category=null;
+    $postcode=null;
+
+    if (isset($_GET["category"]) && strcmp($_GET["category"], 'undefined') != 0 && strcmp($_GET["category"], '0') != 0) {
+        $category = $_GET["category"];
     }
 
+    if (isset($_GET["postcode"]) && strcmp($_GET["postcode"], 'undefined') != 0) {
+        $postcode = intval($_GET["postcode"]);
+    }
 
-    if ($flag){
-    $file_open=fopen($file_name,"r") or die("Unable to open file!");
+    if (isset($_GET["activityName"]) && strcmp($_GET["activityName"], 'undefined') != 0) {
+        $activityName = $_GET["activityName"];
+    }
 
-    $dataset='';
-    //loop part get from php documentation (php.net)
-    while (($data = fgetcsv($file_open, 1000, ",")) != FALSE) {
-        $num = count($data);
-        $row++;
+    $columnSql = "select COLUMN_NAME from information_schema.COLUMNS
+                where table_name = 'OpenData'
+                and table_schema = 'phpmyadmin'";
 
+    $sqlTool = new SqlTool();
 
-        $onePoint='';
-        for ($c=0; $c < $num; $c++) {
-            $onePoint.=$data[$c].',';
+    $result = $sqlTool->execute_dql($columnSql);
+
+    $returnTxt = '';
+    //get result
+    while ($row = mysqli_fetch_row($result)) {
+        //  echo "<br/> $row[0]--$row[1]--$row[2]";
+        foreach ($row as $cell) {
+            $returnTxt .= "$cell^";
         }
-        $dataset.=substr($onePoint,0,-1)."##";
-        
     }
-    $dataset = substr($dataset,0,-2);
-    fclose($file_open);
-    //return $dataset;
-    print $dataset;
+    $returnTxt = substr($returnTxt, 0, -1);
+
+
+    echo $returnTxt . "\n";
+
+    mysqli_free_result($result);
+
+    //$dataSql = "select * from Activity";
+    $dataSql = "select * from OpenData ";
+    $flag = 0;
+
+    if ($activityName != null && strcmp($activityName, 'undefined')!=0) {
+        $dataSql .= " WHERE Name LIKE '%$activityName%' or Business like '%$activityName%'";
+        $flag++;
     }
+
+    if ($postcode != null && strcmp($postcode, "undefined") != 0) {
+        if ($flag == 0) {
+            $dataSql .= " where postcode =" . $postcode . " ";
+            $flag++;
+        } else {
+            $dataSql .= " and postcode =" . $postcode . " ";
+            $flag++;
+        }
+    }
+
+    if ($category != null && strcmp($category, '0')!=0 && strcmp($category, 'undefined')!= 0) {
+        if ($flag == 0) {
+            $dataSql .= " where categoryId =" . $category . " ";
+
+        } else {
+            $dataSql .= " and categoryId =" . $category . " ";
+
+        }
+    }
+
+
+    $result = $sqlTool->execute_dql($dataSql);
+
+
+    while ($row = mysqli_fetch_row($result)) {
+        //  echo "<br/> $row[0]--$row[1]--$row[2]";
+        for ($i = 0; $i < count($row); $i++) {
+            if ($i == count($row) - 1) {
+                echo "$row[$i]";
+            } else {
+                echo "$row[$i]^";
+            }
+        }
+        echo "\n";
+    }
+
+
+    mysqli_free_result($result);
+
+
 }

@@ -33,11 +33,11 @@ function initMap() {
     });
 
 
-   // var input = document.getElementById('addressInput');
+    // var input = document.getElementById('addressInput');
 
-  // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+    // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
-   // var autocomplete = new google.maps.places.Autocomplete(input);
+    // var autocomplete = new google.maps.places.Autocomplete(input);
     //autocomplete.bindTo('bounds', map);
 
     checkType();
@@ -82,7 +82,7 @@ function showUserPoints(activityName, category, postcode) {
     var url = 'http://boredpanda.australiasoutheast.cloudapp.azure.com/boredPandaTest/userData.php?activityName=' + activityName +
         '&postcode=' + postcode + '&category=' + category;
 
-    //alert(url);
+    alert(url);
 
     var http_request = new XMLHttpRequest();
     try {
@@ -105,24 +105,20 @@ function showUserPoints(activityName, category, postcode) {
         }
     }
 
-
-
-
-
     http_request.onreadystatechange = function () {
 
         if (http_request.readyState == 4 || http_request.readyState == "complete") {
             var csv = http_request.responseText;
-            //alert(csv);
+            alert(csv);
             var lines = csv.split("\n");
             var result = [];
 
-            var headers = lines[0].split(",");
+            var headers = lines[0].split("^");
 
             for (var i = 1; i < lines.length; i++) {
 
                 var obj = {};
-                var currentline = lines[i].split(",");
+                var currentline = lines[i].split("^");
 
                 for (var j = 0; j < headers.length; j++) {
                     obj[headers[j]] = currentline[j];
@@ -131,18 +127,21 @@ function showUserPoints(activityName, category, postcode) {
             }
 
             var flag = -1;
-            
+
             for (var i = 0; i< markers.length;i++){
                 markers[i]. setMap(null);
             }
+            markers = [];
+            info = [];
+
             for (var j = 0; j < result.length; j++) {
                 putMark(result[j], 0);
                 flag++;
             }
 
             if (flag < 1) {
-                alert("Cannot find an Activity created by Monash. Try search a place to have this activity?");
-                showOpenDataPoints(postcode, category);
+                alert("Cannot find an Activity created by User. We have suggestions, would you be interested?");
+                showOpenDataPoints(postcode, category, activityName);
             }
             map.setZoom(10);
         }
@@ -154,8 +153,7 @@ function showUserPoints(activityName, category, postcode) {
 
 var http_request;
 //search in open data set according to suburb and category
-function showOpenDataPoints(postcode, category) {
-    var csvName = category;
+function showOpenDataPoints(postcode, category, activityName) {
 
     var http_request = new XMLHttpRequest();
     try {
@@ -178,51 +176,54 @@ function showOpenDataPoints(postcode, category) {
         }
     }
 
-    var url = 'http://boredpanda.australiasoutheast.cloudapp.azure.com/boredPandaTest/dataset/' + csvName + '.csv';
+    var url = 'http://boredpanda.australiasoutheast.cloudapp.azure.com/boredPandaTest/userData.php?activityName=' + activityName +
+        '&postcode=' + postcode + '&category=' + category;;
     //url+="?dataSet="+string;
     //url=url+"&sid="+Math.random();
     http_request.onreadystatechange = function () {
 
         if (http_request.readyState == 4 || http_request.readyState == "complete") {
             var csv = http_request.responseText;
-            //alert(csv);
+            alert(csv);
             var lines = csv.split("\n");
 
             var result = [];
 
-            var headers = lines[0].split(",");
+            var headers = lines[0].split("^");
 
             for (var i = 1; i < lines.length; i++) {
 
                 var obj = {};
-                var currentline = lines[i].split(",");
+                var currentline = lines[i].split("^");
 
                 for (var j = 0; j < headers.length; j++) {
                     obj[headers[j]] = currentline[j];
                 }
                 result.push(obj);
             }
-            
+
             var flag = 0;
-           /* 
-            if (postcode === 'undefined') {
-               
-                for (var j = 0; j < result.length; j++) {
-                    putMark(result[j], 1);
-                    flag++;
-                }
-            }
-            else {*/
+            /*
+             if (postcode === 'undefined') {
+
+             for (var j = 0; j < result.length; j++) {
+             putMark(result[j], 1);
+             flag++;
+             }
+             }
+             else {*/
             for (var i = 0; i< markers.length;i++){
                 markers[i]. setMap(null);
             }
-           
-            
-                for (var j = 0; j < result.length; j++) {
-                    //if (result[j].Postcode == parseInt(postcode)) {
-                        putMark(result[j], 1);
-                        flag++;
-                    //}
+
+            markers = [];
+            info = [];
+
+            for (var j = 0; j < result.length; j++) {
+                //if (result[j].Postcode == parseInt(postcode)) {
+                putMark(result[j], 1);
+                flag++;
+                //}
                 //}
             }
 
@@ -268,14 +269,14 @@ function putMark(result, type) {
     }
 
     var index = markers.length - 1;
-        google.maps.event.addListener(markers[index], 'click', function () {
+    google.maps.event.addListener(markers[index], 'click', function () {
 
-            for(var i = 0; i<info.length;i++){
-                info[i].close();
-            }
+        for(var i = 0; i<info.length;i++){
+            info[i].close();
+        }
 
-            info[index].open(map, markers[index]);
-        });
+        info[index].open(map, markers[index]);
+    });
 
 }
 
@@ -363,7 +364,7 @@ function placeMarker(location, address) {
         '<td>Address:</td><td>' + address +
         '</td></tr>'+
         '<tr>' +
-        '<td><button id="triggerClose" onclick="cancelPopUp()">Cancle</button></td>' +
+        '<td><button id="triggerClose" onclick="cancelPopUp()">Cancel</button></td>' +
         '<td>' +
         '<button id="trigger" class="trigger" onclick="popUp()">Create</button>' +
         '</tr>' +
@@ -378,8 +379,8 @@ function placeMarker(location, address) {
 }
 
 /*
-    create new activity point according to user input
-*/
+ create new activity point according to user input
+ */
 function newActivity(newLng, newLat) {
     var newLocation = {lat: newLat, lng: newLng};
     //element should be get before clear the point
@@ -424,11 +425,11 @@ function cancelPopUp(){
 
 //show the bar
 function popUp(){
-        if(status==0)
-        {
-            $("#slider").show(500);
-            status=1;
-        }
+    if(status==0)
+    {
+        $("#slider").show(500);
+        status=1;
+    }
 }
 
 

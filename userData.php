@@ -41,10 +41,10 @@ function dbConnect()
     while ($row = mysqli_fetch_row($result)) {
         //  echo "<br/> $row[0]--$row[1]--$row[2]";
         foreach ($row as $cell) {
-            $returnTxt .= "$cell`^";
+            $returnTxt .= "$cell^";
         }
     }
-    $returnTxt = substr($returnTxt, 0, -2);
+    $returnTxt = substr($returnTxt, 0, -1);
 
 
     echo $returnTxt . "\n";
@@ -90,7 +90,7 @@ function dbConnect()
             if ($i == count($row) - 1) {
                 echo "$row[$i]";
             } else {
-                echo "$row[$i]`^";
+                echo "$row[$i]^";
             }
         }
         echo "\n";

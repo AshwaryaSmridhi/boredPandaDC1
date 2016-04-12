@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c2f84d1-46e9-4803-b789-26f04f4bd4af" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SqlTool.class.php" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/database.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SimpleMapJS.js" afterPath="$PROJECT_DIR$/SimpleMapJS.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openData.php" afterPath="$PROJECT_DIR$/openData.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/userData.php" afterPath="$PROJECT_DIR$/userData.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="boredPandaDC1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,11 +30,43 @@
       <file leaf-file-name="userData.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/userData.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2512909">
-              <caret line="80" column="5" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.3545611">
+              <caret line="40" column="46" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
               <folding>
-                <marker date="1460449983000" expanded="true" signature="699:843" placeholder="select COLUM..COLUMNS..." />
-                <marker date="1460449983000" expanded="true" signature="1320:1342" placeholder="select * fro..Activity..." />
+                <marker date="1460462226000" expanded="true" signature="699:843" placeholder="select COLUM..COLUMNS..." />
+                <marker date="1460462226000" expanded="true" signature="1319:1341" placeholder="select * fro..Activity..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="openData.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/openData.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.7391305">
+              <caret line="75" column="44" selection-start-line="75" selection-start-column="44" selection-end-line="75" selection-end-column="44" />
+              <folding>
+                <marker date="1460460189000" expanded="true" signature="742:886" placeholder="select COLUM..COLUMNS..." />
+                <marker date="1460460189000" expanded="true" signature="1362:1384" placeholder="select * fro..OpenData..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SimpleMapJS.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SimpleMapJS.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="234" column="9" selection-start-line="234" selection-start-column="9" selection-end-line="234" selection-end-column="9" />
+              <folding>
+                <element signature="n#!!block;n#putMark#0" expanded="false" />
+                <element signature="n#!!block;n#getLocationByAddress#0" expanded="false" />
+                <element signature="n#!!block;n#geoToLatLng#0" expanded="false" />
+                <element signature="n#!!block;n#latLngToGeo#0" expanded="false" />
+                <element signature="n#!!block;n#placeMarker#0" expanded="false" />
+                <element signature="n#!!block;n#newActivity#0" expanded="false" />
+                <element signature="n#!!block;n#cancelPopUp#0" expanded="false" />
+                <element signature="n#!!block;n#popUp#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -62,6 +94,8 @@
       <list>
         <option value="$PROJECT_DIR$/aboutUs.php" />
         <option value="$PROJECT_DIR$/SqlTool.class.php" />
+        <option value="$PROJECT_DIR$/SimpleMapJS.js" />
+        <option value="$PROJECT_DIR$/openData.php" />
         <option value="$PROJECT_DIR$/userData.php" />
       </list>
     </option>
@@ -224,13 +258,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/SimpleMapJS.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="234" column="9" selection-start-line="234" selection-start-column="9" selection-end-line="234" selection-end-column="9" />
+          <folding>
+            <element signature="n#!!block;n#putMark#0" expanded="false" />
+            <element signature="n#!!block;n#getLocationByAddress#0" expanded="false" />
+            <element signature="n#!!block;n#geoToLatLng#0" expanded="false" />
+            <element signature="n#!!block;n#latLngToGeo#0" expanded="false" />
+            <element signature="n#!!block;n#placeMarker#0" expanded="false" />
+            <element signature="n#!!block;n#newActivity#0" expanded="false" />
+            <element signature="n#!!block;n#cancelPopUp#0" expanded="false" />
+            <element signature="n#!!block;n#popUp#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.7391305">
+          <caret line="75" column="44" selection-start-line="75" selection-start-column="44" selection-end-line="75" selection-end-column="44" />
+          <folding>
+            <marker date="1460460189000" expanded="true" signature="742:886" placeholder="select COLUM..COLUMNS..." />
+            <marker date="1460460189000" expanded="true" signature="1362:1384" placeholder="select * fro..OpenData..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/userData.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2512909">
-          <caret line="80" column="5" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.3545611">
+          <caret line="40" column="46" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
           <folding>
-            <marker date="1460449983000" expanded="true" signature="699:843" placeholder="select COLUM..COLUMNS..." />
-            <marker date="1460449983000" expanded="true" signature="1320:1342" placeholder="select * fro..Activity..." />
+            <marker date="1460462226000" expanded="true" signature="699:843" placeholder="select COLUM..COLUMNS..." />
+            <marker date="1460462226000" expanded="true" signature="1319:1341" placeholder="select * fro..Activity..." />
           </folding>
         </state>
       </provider>
