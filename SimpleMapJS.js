@@ -176,7 +176,7 @@ function showOpenDataPoints(postcode, category, activityName) {
         }
     }
 
-    var url = 'http://boredpanda.australiasoutheast.cloudapp.azure.com/boredPandaTest/userData.php?activityName=' + activityName +
+    var url = 'http://boredpanda.australiasoutheast.cloudapp.azure.com/boredPandaTest/openData.php?activityName=' + activityName +
         '&postcode=' + postcode + '&category=' + category;;
     //url+="?dataSet="+string;
     //url=url+"&sid="+Math.random();
