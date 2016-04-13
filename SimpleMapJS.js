@@ -73,11 +73,13 @@ function checkType() {
     var activityName = req['activityName'];
     var postcode = req['postcode'];
     var category = req['category'];
+    
+    alert(category);
 
     //`alert(postcode);
 
-    $('pref-search1').value = activityName;
-    $('pref-categoty').value = category;
+    document.getElementById('pref-search1').value = activityName;
+    document.getElementById('pref-category').value = category;
 
     showUserPoints(activityName, category, postcode);
 
