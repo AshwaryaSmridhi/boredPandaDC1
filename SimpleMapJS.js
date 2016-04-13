@@ -40,6 +40,8 @@ function initMap() {
     // var autocomplete = new google.maps.places.Autocomplete(input);
     //autocomplete.bindTo('bounds', map);
 
+
+
     checkType();
     //showPoints();
     //getPlaceFromJason();
@@ -73,6 +75,10 @@ function checkType() {
     var category = req['category'];
 
     //`alert(postcode);
+
+    $('pref-search1').value = activityName;
+    $('pref-categoty').value = category;
+
     showUserPoints(activityName, category, postcode);
 
 }
